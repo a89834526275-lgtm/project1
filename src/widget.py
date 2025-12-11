@@ -15,3 +15,10 @@ def mask_account_card(card_type_and_number: str) -> str:
             return f"{subgroups[0]} {card_number}"
         else:
             return f"{subgroups[0]} {subgroups[1]} {account_number}"
+
+
+def get_date(dates: str) -> str:
+    """функция изменяет формат даты"""
+    date = dates[0:10]
+    elements = date.split("-")
+    return f"{elements[-1]}.{elements[-2]}.{elements[0]}"
