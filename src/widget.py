@@ -1,20 +1,19 @@
+from mask import get_mask_account, get_mask_card_number
+
+
 def mask_account_card(card_type_and_number: str) -> str:
     """Функция обрабатывает информацию как о картах, так и о счетах"""
     subgroups = card_type_and_number.split(" ")
     number_of_elements = len(subgroups)
-    card_number = (
-        f"{subgroups[-1][0:5]} {subgroups[-1][5:7]}** **** {subgroups[-1][12:]}"
-    )
-    account_number = (
-        f"{subgroups[-1][0:5]} {subgroups[-1][5:7]}** **** {subgroups[-1][12:]}"
-    )
     if subgroups[0] == "Счет":
-        return f"{subgroups[0]} **{subgroups[1][-4:]}"
+        return f"{subgroups[0]} {get_mask_account(subgroups[-1])}"
     else:
         if number_of_elements <= 2:
-            return f"{subgroups[0]} {card_number}"
+            return f"{subgroups[0]} {get_mask_card_number(subgroups[-1])}"
         else:
-            return f"{subgroups[0]} {subgroups[1]} {account_number}"
+            return (
+                f"{subgroups[0]} {subgroups[1]} {get_mask_card_number(subgroups[-1])}"
+            )
 
 
 def get_date(dates: str) -> str:
