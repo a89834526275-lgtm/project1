@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Union
 
 
 def filter_by_state(
@@ -16,10 +16,7 @@ def filter_by_state(
 
 def sort_by_date(
     list_of_dictionaries: list[dict[Any, Any]],
-    condition: str = "сортировка по убыванию",
+    condition: Union[bool] = True,
 ) -> list[dict[Any, Any]]:
     """Функция возвращает новый список, отсортированный по дате (date)."""
-    if condition == "сортировка по убыванию":
-        return sorted(list_of_dictionaries, key=lambda x: x["date"], reverse=True)
-    else:
-        return sorted(list_of_dictionaries, key=lambda x: x["date"], reverse=False)
+    return sorted(list_of_dictionaries, key=lambda x: x["date"], reverse=condition)
