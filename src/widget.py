@@ -1,4 +1,4 @@
-from mask import get_mask_account, get_mask_card_number
+from src.mask import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_type_and_number: str) -> str:
@@ -21,3 +21,5 @@ def get_date(dates: str) -> str:
     date = dates[0:10]
     elements = date.split("-")
     return f"{elements[-1]}.{elements[-2]}.{elements[0]}"
+
+print(mask_account_card("Maestro 1596837868705199"))
