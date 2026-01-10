@@ -21,5 +21,3 @@ def get_date(dates: str) -> str:
     date = dates[0:10]
     elements = date.split("-")
     return f"{elements[-1]}.{elements[-2]}.{elements[0]}"
-
-print(mask_account_card("Maestro 1596837868705199"))
