@@ -7,12 +7,12 @@ from src.mask import get_mask_account, get_mask_card_number
     ("6831982476737658", "6831 98** **** 7658"),
     ("8990922113665229", "8990 92** **** 5229"),
 ])
-def test_get_mask_card_number(value, expected):
+def test_get_mask_card_number(value: str, expected: str) -> None:
     assert get_mask_card_number(value) == expected
 
 @pytest.fixture
-def mask():
+def mask() -> str:
     return "**4305"
 
-def test_get_mask_account(mask):
+def test_get_mask_account(mask: str) -> None:
     assert get_mask_account(73654108430135874305) == mask
