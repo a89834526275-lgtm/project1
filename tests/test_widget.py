@@ -1,10 +1,15 @@
+import pytest
+
 from src.widget import get_date, mask_account_card
 
 
-def test_mask_account_card():
-    assert (
-        mask_account_card("Maestro 1596837868705199") == "Maestro 1596 83** **** 5199"
-    )
+@pytest.fixture
+def card():
+    return "Maestro 1596 83** **** 5199"
+
+
+def test_mask_account_card(card):
+    assert mask_account_card("Maestro 1596837868705199") == card
 
 
 def test_get_date():
